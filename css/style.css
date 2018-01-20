@@ -1,0 +1,45 @@
+.p-l-40{
+	padding-left: 40px;
+}
+
+.p-t-40{
+	padding-top: 40px;
+}
+
+.p-b-30{
+	padding-bottom: 30px;
+}
+
+.p-r-30{
+	padding-right: 30px;
+}
+
+.m-b-20{
+	margin-bottom: 20px;
+}
+
+
+.p-r-0{
+	padding-right: 0;
+}
+
+.p-l-0{
+	padding-left: 0;
+}
+
+.option-shadow{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.summary-style{
+	border:1px solid lightgrey
+	;min-height: 300px; 
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.bold{
+	font-weight: bold;
+}
