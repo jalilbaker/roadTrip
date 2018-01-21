@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <!-- jQuery library -->
+	
+    <title>Document</title>
+	<style>
+			#right-panel {
+	        font-family: 'Roboto','sans-serif';
+	        line-height: 30px;
+	        padding-left: 10px;
+	      }
+
+	      #right-panel select, #right-panel input {
+	        font-size: 15px;
+	      }
+
+	      #right-panel select {
+	        width: 100%;
+	      }
+
+	      #right-panel i {
+	        font-size: 12px;
+	      }
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      #map {
+	        height: 100%;
+	        float: left;
+	        width: 70%;
+	        height: 100%;
+	      }
+	      #right-panel {
+	        margin: 20px;
+	        border-width: 2px;
+	        width: 20%;
+	        height: 400px;
+	        float: left;
+	        text-align: left;
+	        padding-top: 0;
+	      }
+	      #directions-panel {
+	        margin-top: 10px;
+	        background-color: #FFEE77;
+	        padding: 10px;
+	        overflow: scroll;
+	        height: 174px;
+	      }
+	       #infowindow-content {
+        		display: none;
+        		display: inline;
+      		}
+    </style>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="right-panel">
+		<div>
+			<b>Start Here: </b><br>
+			 <input id="origin" class="controls" type="text"
+       			 placeholder="Enter a Starting Point">
+       		<br>
+       		<div>
+       			<b>Pit Stops: </b><br>
+				<input id="pitstop" class="controls" type="text"
+       			 placeholder="Enter a pit-stop" ><br>
+       		</div>
+    		<b>End: </b><br>
+    		<input id="destination" class="controls" type="text"
+       			placeholder="Enter a Destination" ><br>
+    		<input type="submit" id="submit">				
+    	</div>
+   	<!-- <div id = "directions-panel"> -->
+    	</div>
+	</div>
+	<script async defer  
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPXm9QmxaInN3DegD3IayRg1BQrWlC9rA&libraries=places
+	&callback=initMap"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="..\js\destination.js"></script>
+</body>
