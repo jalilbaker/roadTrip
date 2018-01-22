@@ -2,6 +2,10 @@
 	padding-left: 40px;
 }
 
+#p-l-50{
+	padding-left: 50px;
+}
+
 .p-t-40{
 	padding-top: 40px;
 }
@@ -28,18 +32,112 @@
 }
 
 .option-shadow{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+	background:rgba(255,255,255, 0.9);
 }
 
 
+
 .summary-style{
-	border:1px solid lightgrey
-	;min-height: 300px; 
+	border:1px solid lightgrey;
+	min-height: 300px; 
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-right: 10px;
+	background:rgba(255,255,255, 0.9);
+}
+
+
+.next-btn{
+	/*border:1px solid lightgrey;*/
+	background-color: #2C7873; 
+	color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin-top: 20px;
+}
+
+.next-btn:hover{
+	background-color: #004445;	
 }
 
 .bold{
 	font-weight: bold;
 }
+
+.outline-button{
+	border-radius: 50px;
+	
+	border: 3px solid #021C1E;
+	color: #021C1E;
+}
+
+.fal-outline-button{
+	border-radius: 50px;
+	border: 1px solid #021C1E;
+	color: #021C1E;
+	padding:10px 30px;
+}
+
+.fal-outline-button:hover{
+	border: 2px solid #2C7873;
+	color: #2C7873;
+}
+
+
+.outline-button-pad{
+	padding:20px 60px;
+}
+
+.f-s-20{
+	font-size:20px;
+}
+
+.blue-black{
+	color:#021C1E;
+}
+
+.outline-button:hover{
+	border: 3px solid white;
+	color: white;
+}
+
+
+a, a:hover, a:active{
+	text-decoration: none;
+}
+
+a{
+	color: black;
+}
+
+.navbar-brand-custom{
+	font-family: 'Averia Serif Libre', cursive;
+	font-size:25px;
+	color: white !important;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.bg-lgreen{
+	background-color: #6FB98F;
+}
+
+.welcome-sec{
+	position:relative;
+	top: 20%;
+	color: white;
+}
+
+
+.form-check-custom{
+	position: relative;
+    display: block;
+}
+
+.bg-unsplash{
+	background: url('');
+}
+
