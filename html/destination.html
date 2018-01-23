@@ -68,7 +68,11 @@
        		<div>
        			<b>Pit Stops: </b><br>
 				<input id="pitstop" class="controls" type="text"
-       			 placeholder="Enter a pit-stop" ><br>
+       			 placeholder="Enter a pit-stop" >
+       			 <ul id = "wayPointList">
+
+       			 </ul>
+       			 <input type="button" id="addWayPoint">Add Waypt.<br>
        		</div>
     		<b>End: </b><br>
     		<input id="destination" class="controls" type="text"
@@ -78,6 +82,7 @@
    	<!-- <div id = "directions-panel"> -->
     	</div>
 	</div>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 	<script async defer  
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPXm9QmxaInN3DegD3IayRg1BQrWlC9rA&libraries=places
 	&callback=initMap"></script>

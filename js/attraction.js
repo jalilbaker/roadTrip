@@ -1,8 +1,9 @@
 
 
 //Fetch the origin & destination place id 
-	var originPlaceId = localStorage.getItem('Origin'); 
-	var destPlaceId = localStorage.getItem('Destination'); 
+	var originPlaceId = localStorage.getItem('markPoint0'); 
+	//var destPlaceId = localStorage.getItem('Destination'); 
+	//var markers[]; 
 //Get the API key 
 	const paramKey = "AIzaSyAPXm9QmxaInN3DegD3IayRg1BQrWlC9rA" ; 
 	const placesKey  = "AIzaSyAMqtL7DW6EbTOWa7WrqR2uH8aV-smIsNA"; 
@@ -13,11 +14,10 @@
 	var originLocation; 
 
 		//Invoke the Places API to actually get the info you want. 
-	const radius=50000; 
+	const radius=5000000; 
 	const rankby='prominence'; 
-
 	var minPrice=0;  
-	var maxPrice=1;
+	var maxPrice=5;
 	var keyword = "point_of_interest"; 
 
 //For CORS 
@@ -26,10 +26,11 @@
 //tHERE WILL NEED TO BE AN IF ELSE OR A LOOP FOR EACH OF THE WAYPOINTS
 	var queryURL = 
 		"https://maps.googleapis.com/maps/api/place/details/json?placeid="
-		+originPlaceId+"&key="+paramKey+"&callback=?"
-    
+		+originPlaceId+"&key="+paramKey; 
+    console.log(queryURL); 
+
     var placesUrl = 
-    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" 
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" ; 
     /*+ originLocation +
 	"&radius="+radius+
 	"&minprice="+minPrice+"&maxprice="+maxPrice+
@@ -47,31 +48,20 @@
 					url: queryURL,
 			        method: "GET"
 					}).done(function(response){
-						console.log(response)
+						
 						latlngArray = response.result.geometry.location; 
-						//console.log(latlngArray); 
 						latOrigin = response.result.geometry.location.lat; 
-						//console.log(latOrigin); 
 						lngOrigin = response.result.geometry.location.lng; 
-						//console.log(lngOrigin)
 						originLocation = latOrigin+ ',' + lngOrigin; 
 
 						placesQueryUrl = placesUrl + originLocation +
 									"&radius="+radius+
-									"&minprice="+minPrice+"&maxprice="+maxPrice+
-									"&keyword="+keyword+
+									//"&minprice="+minPrice+"&maxprice="+maxPrice+
+									//"&keyword="+keyword+
 									"&key="+placesKey; 
+									console.log(placesQueryUrl)
 
-						
-					}); 
-
-					placesQueryUrl = placesUrl + "42.3600825,-71.0588801" +
-									"&radius="+radius+
-									"&minprice="+minPrice+"&maxprice="+maxPrice+
-									"&keyword="+keyword+
-									"&key="+placesKey; 
-
-					//Call to places 				
+												
 					$.ajax({
 						url: placesQueryUrl, 
 						method: "GET"
@@ -96,6 +86,11 @@
 
            			 }
 				})
+
+						
+					}); 
+
+				
 				
 			})
 
