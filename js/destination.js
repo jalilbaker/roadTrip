@@ -14,7 +14,8 @@ function initMap(){
         });
 	//Display the map
 	dirDisplay.setMap(map); 
-	
+		
+
 	//set origin, destination and waypoint markers 
 	var originInput = document.getElementById('origin'); 
 	var destinationInput = document.getElementById('destination'); 
@@ -80,6 +81,9 @@ function calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinati
 		}
 	})
 
-	
-}
+
+	}
+
+
+
 
