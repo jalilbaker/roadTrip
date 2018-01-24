@@ -79,5 +79,7 @@ function calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinati
 			windows.alert("Direction Request Failed due to" + status); 
 		}
 	})
+
+	
 }
 
