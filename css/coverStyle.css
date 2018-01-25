@@ -1,12 +1,6 @@
-/*//important stuff*/
-video {
-  width: 100%    !important;
-  height: auto   !important;
-}
+
 .bg {
-  /* background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/168181/trama.png');*/
    background:rgba(255,255,255, 0.3);
-    /*//background texture*/
 }
 
 #overlay {
@@ -22,9 +16,19 @@ video {
   -webkit-font-smoothing: antialiased;
 }
 
-/*//typography*/
 
-body { font-family: 'Raleway', sans-serif; margin: 0;}
-p { display: block; padding: 60px;padding-bottom: 30px;}
-/*a { cursor: pointer; background:  rgba(247, 205, 38, 0.53); padding: 20px;  font-size: 30px}*/
+
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+
 

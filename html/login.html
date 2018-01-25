@@ -5,63 +5,106 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/coverStyle.css">
-    <title>Hello, world!</title>
+
+    <title>Roam - Plan your next Road Trip!</title>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-lgreen sticky-top">
-        <a class="navbar-brand navbar-brand-custom" href="#">
+        <a class="navbar-brand navbar-brand-custom f-s-25" href="#">
             <i class="fa fa-compass blue-black" aria-hidden="true"></i>
             ROAM
       </a>
-        <!--         <ul class="nav justify-content-end">
+                <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
+                <a class="nav-link" href="#" id="logout">Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul> -->
+        </ul>
     </nav>
+
+
+
     <div class="container-fluid">
-        <div class="row">
+        <div class="row main-height">
             <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
-                <video id="player" autoplay loop>
+                <video autoplay loop id="video-background" muted plays-inline>
                     <source src="../css/Jungle_Road/Jungle_Road.mp4" type="video/mp4">
                 </video>
-                <div id="overlay" class="bg">
-                    <div class="welcome-sec">
-                        <p class="bold" style="padding-bottom:0;">Welcome to </p>
-                        <a class="outline-button f-s-20 outline-button-pad" href="">Get Started</a>
-                    </div>
-                    <!-- <a onclick="clicked()" id="clickme">click me to toggle texture</a> -->
+               
+                        <div id="overlay" class="bg">
+                         <div class="col-md-6 mx-auto">
+                    <div class="row">
+                            <div class="welcome-sec row" style="margin-left: 15px;margin-right: 15px;">
+                                <div class="col-md-12 welcome text-left" style="padding:2%;"> 
+                                    <div class="p-l-15">
+                                        <p class="bold f-s-20" style="line-height: 1;padding-top: 20px;">Welcome to<br>
+                                        <span class="bold welcome-brand-name" style="font-size: 60px;">Roam</span>
+                                        </p>
+                                        <p style="line-height: 1.15;font-size:16px;">Please sign in to get started on your road trip.</p>
+                                    </div>                          
+                                </div>
+
+<!--                                 padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px; -->
+
+                                <div class="col-md-12" style="padding:0% 10% 5% 10%;">
+                                    <form class="text-center p-b-15" >
+                                      <div class="form-group text-left m-b-0">
+                                        <label class="f-s-25" for="inputEmail">Email address</label>
+                                        <input type="email" class="form-control form-control-lg input-custom" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" style="">
+                                      </div>
+                                      <div class="form-group text-left">
+                                        <label class="f-s-25" for="inputPassword">Password</label>
+                                        <input type="password" class="form-control form-control-lg input-custom" id="inputPassword" placeholder="Password" style="">
+                                      </div>
+                                      <button type="submit" class="login-btn f-s-20" style="" id="signup">Get Started</button>
+                                      <button type="submit" class="login-btn f-s-20" style="" id="login">Log in</button>
+                                    </form>
+                                </div>
+                            </div>
+                              </div>
                 </div>
+
+                        </div>
+
+                  
+
             </div>
+
+
         </div>
     </div>
-    <footer>
+
+            <footer class="blue-black-bg fixed-bottom">
         <nav class="navbar navbar-light justify-content-center">
-          <ul class="nav justify-content-end ">
-            <li class="nav-item ">
-              <a class="nav-link active " href="# ">&copy; 2018</a>
+          <ul class="nav justify-content-end p-t-10">
+            <li class="nav-item navbar-brand-custom f-c-w f-s-14">
+              &copy; ROAM 2018
             </li>
           </ul>
         </nav>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 
     <script src="https://use.fontawesome.com/7600238cd3.js "></script>
 
-    <script src="../js/cover.js "></script>
+    <script src="../js/firebase-login.js"></script>
+
+
+    
 
   </body>
 
