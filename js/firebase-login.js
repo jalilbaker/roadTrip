@@ -1,9 +1,6 @@
 
-
-(function(){
-
   // Initialize Firebase
-  const config = {
+  var config = {
     apiKey: "AIzaSyBFJfhRZXMnD2Vq-_X0WOKo7LZp5ZaFyoU",
     authDomain: "roam-1222d.firebaseapp.com",
     databaseURL: "https://roam-1222d.firebaseio.com",
@@ -13,69 +10,102 @@
   };
   firebase.initializeApp(config);
 
-  // Get elements
-  const inputEmail = document.getElementById('inputEmail');
-  const inputPassword = document.getElementById('inputPassword');
-  const signup = document.getElementById('signup');
-  const login = document.getElementById('login');
-  const logout = document.getElementById('logout');
 
-  // Add login event
-  login.addEventListener('click', e => {
-    // Get email and pass
-    const email = inputEmail.value;
-    const pass = inputPassword.value;
-    const auth = firebase.auth();
-    // Sign in
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      document.getElementById('user_div').style.display = 'initial';
+      document.getElementById('login_div').style.display = 'none';
+      document.getElementById('sendVerfication').style.display = 'none';
+      document.getElementById('beginTripBtn').style.display = 'initial';
 
-  });
+      var user = firebase.auth().currentUser;
+    }
 
-  signup.addEventListener('click', e => {
+    if(user != null){
 
-    // Get email and pass
-    // TODO: CHECK 4 REAL EMAILZ
-    const email = inputEmail.value;
-    const pass = inputPassword.value;
-    const auth = firebase.auth();
-    // Sign in
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise
-      .then(user => console.log(user));
-      // .catch(e => console.log(e.message));
+        var email_id = user.email;
+        var email_verified = user.emailVerified;
 
-  });
+        if(email_verified){
+          document.getElementById('sendVerfication').style.display = 'none';
+          document.getElementById('beginTripBtn').style.display = 'initial';
+        } else{
+          document.getElementById('sendVerfication').style.display = 'initial';
+          document.getElementById('beginTripBtn').style.display = 'none';
+        }
 
+        document.getElementById('user_para').innerHTML = 'User : ' + email_id + '<br><br>Currently you email verification status is : ' + email_verified;
+    } 
 
-  logout.addEventListener('click', e => {
-    firebase.auth().signOut();
-  });
+    else {
+      // No user is signed in.
+       document.getElementById('user_div').style.display = 'none';
+      document.getElementById('login_div').style.display = 'initial';
+      document.getElementById('beginTripBtn').style.display = 'none';
 
-  // firebase.auth().onAuthStateChanged(firebaseUser => {
-  //     if(firebaseUser){
-  //       console.log(firebaseUser);
-  //     } else{
-  //       console.log('not logged in');
-  //     }
-  // });
-
-
-} ());
+    }
+});
 
 
 
 
+$('#login').on('click', function(){
+    var userEmail = document.getElementById('inputEmail').value;
+    var userPassword = document.getElementById('inputPassword').value;
+
+   firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+
+      alert('Error : ' + errorMessage);
+
+    });
+});
 
 
+$('#createAccount').on('click', function(){
 
+    var userEmail = document.getElementById('inputEmail').value;
+    var userPassword = document.getElementById('inputPassword').value;
 
-// inputEmail
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
 
-// inputPassword
+      alert('Error : ' + errorMessage);
 
-// signup
+    });
 
-// login
+});
 
-// logout
+$('#sendVerfication').on('click', function(){
+
+    var user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(function() {
+
+      $('#verifyMessage').html('<b class="welcome-brand-name">Check your email to verify your email address</b>')
+
+      document.getElementById('beginTripBtn').style.display = 'initial';
+      document.getElementById('sendVerfication').style.display = 'none';
+      // Email sent.
+      // alert('Verification Sent');
+
+    }).catch(function(error) {
+      // An error happened.
+
+      alert('Error : ' + errorMessage);
+
+    });
+
+});
+
+$('#signOut').on('click', function(){
+  firebase.auth().signOut();
+});
+

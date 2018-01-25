@@ -6,7 +6,7 @@ function initMap(){
 	var dirDisplay = new google.maps.DirectionsRenderer ;
 	var autocompleteOrigin; 
 	var autocompleteDestination;  
-	
+	var wayptsList = []; 
 	//Set parameters for map.
 	var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
@@ -14,6 +14,8 @@ function initMap(){
         });
 	//Display the map
 	dirDisplay.setMap(map); 
+		
+
 	//set origin, destination and waypoint markers 
 	var originInput = document.getElementById('origin'); 
 	var destinationInput = document.getElementById('destination'); 
@@ -24,7 +26,12 @@ function initMap(){
 	}
 	if (pitstopInput!=null){
 		var autocompletePitstop = new google.maps.places.Autocomplete(pitstopInput);
-		//map.controls[google.maps.ControlPostition.TOP_LEFT].push(destinationInput); 	
+		 // $("#addWayPoint").on('click', function() {
+       		
+   //     		$("#wayPointList").append('<li>' + pitstopInput.value + '</li>');    
+   //     		wayptsList.push(pitstopInput.value); 
+   //     })
+		
 	}
 	if (destinationInput!=null){
 		var autocompleteDestination = new google.maps.places.Autocomplete(destinationInput);
@@ -33,41 +40,61 @@ function initMap(){
 
 
 	$("#submit").click(function(){
-		calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinationInput); 
+		event.preventDefault(); 
+		calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinationInput, wayptsList); 
 
 	})
 }
 
 
 
-//function to create an array of waypoints
-function collectWayPoints(){
+function calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinationInput, pitstop){
 
-
-
-}
-
-function calculateAndDisplayRoute(dirService, dirDisplay, originInput, destinationInput){
-
-
-	dirService.route({
+	var waypts = []; 
+			// for (var i = 0; i < wayptsList.length; i++) {
+	  //         	waypts.push({
+	  //             location: wayptsList[i],
+	  //             stopover: true
+	  //           });
+	  waypts.push({
+	  	location: document.getElementById('pitstop').value, 
+	  	stopover: true
+	  })
+          
+			
+	dirService.route({	
 		origin: originInput.value, 
 		destination: destinationInput.value,
-		travelMode: "DRIVING"
+		travelMode: "DRIVING",
+		waypoints: waypts,
+		optimizeWaypoints: true
 	}, function(result, status){
 		if(status ==="OK"){
 			console.log(result);		
 			dirDisplay.setDirections(result); 
-			var originId = result.geocoded_waypoints[0].place_id ; 
-			var destinationId = result.geocoded_waypoints[1].place_id ;
-			
 			localStorage.clear();  
-			localStorage.setItem("Origin", originId); 
-			localStorage.setItem("Destination", destinationId); 			
+			var markPoint; 
+			for (var j = 0; j<result.geocoded_waypoints.length; j++){
+				var  markPoint = result.geocoded_waypoints[j].place_id; 
+				var key = "markPoint"+j;		
+				localStorage.setItem(key, markPoint); 	
+			}
+
+			var markPoint0Name = result.request.origin.query; 
+			var markPoint1Name = result.request.waypoints[0].location.query; 
+			var markPoint2Name = result.request.destination.query; 
+			localStorage.setItem("markPoint0Name", markPoint0Name); 
+			localStorage.setItem("markPoint1Name", markPoint1Name); 
+			localStorage.setItem("markPoint2Name", markPoint2Name); 
+
+			
 		}
 		else{
 			windows.alert("Direction Request Failed due to" + status); 
 		}
 	})
-}
+
+
+	}
+
 
