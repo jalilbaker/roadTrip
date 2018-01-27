@@ -451,21 +451,21 @@ $(document).ready(function() {
 
 
   function updateDB() {
-    var newFood = {
+    var newAttractions = {
          endSelection: [],
          waySelection: []  
     };
     // load the food objects with new data obtained from Google API
     for (var i = 0; i < waySeleArray.length; i++) {
-      newFood.waySelection[i] = waySeleArray[i];
+      newAttractions.waySelection[i] = waySeleArray[i];
     };
     for (var i = 0; i < endSeleArray.length; i++) {
-      newFood.endSelection[i] = endSeleArray[i];
+      newAttractions.endSelection[i] = endSeleArray[i];
     };
     // get Firebase DB selections record
     var selections = {};
     data.child("selections");
-    selections.food = newFood;
+    selections.attractions = newAttractions;
     //Upload the Road Trip food selections data object into the database
     //data.update(selections);                     
     //data.child("selections");
