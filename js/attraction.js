@@ -75,6 +75,15 @@ $(document).ready(function() {
     var pitstop = localStorage.getItem('markPoint1Name'); 
     var destination = localStorage.getItem('markPoint2Name'); 
 
+    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
+    
+    $('#lgSelections').html(lodgingWaySummary);
+
+    var foodWaySummary = localStorage.getItem('foodWayPointSummary'); 
+    
+    $('#lgSelections').html(foodWaySummary);
+
+
     $('#startPoint').text(origin); 
 
     $('#profile-tab').text(pitstop); 
@@ -461,9 +470,22 @@ $(document).ready(function() {
 
   $( "#contact-tab" ).click(function() {
     $('#atSelections').empty();
+    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
+    
+    $('#lgSelections').html(lodgingWaySummary);
+
+    var foodWaySummary = localStorage.getItem('foodWayPointSummary'); 
+    
+    $('#lgSelections').html(foodWaySummary);
   });
   $( "#profile-tab" ).click(function() {
     $('#atSelections').empty();
+    var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
+    $('#lgSelections').html(lodgingEndSummary);
+
+    var foodEndSummary = localStorage.getItem('foodEndPointSummary'); 
+    
+    $('#lgSelections').html(foodEndSummary);
   });
 
   $(".wp-att-sel-1").click(function() {

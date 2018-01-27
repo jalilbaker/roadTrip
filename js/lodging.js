@@ -379,6 +379,7 @@ $(document).ready(function() {
         endSeleArray.push([endPlacesArray[i][0] + br + endPlacesArray[i][1]]);
 
         localStorage.setItem('lodgingEndPointSummary', epSumm); 
+        
 
         //console.log("end places array1: ", endPlacesArray[i][0]);
         //console.log("end selection array2: ", endPlacesArray[i][1]);
@@ -415,6 +416,7 @@ $(document).ready(function() {
         wpSumm = wpSumm + wayPlacesArray[i][0] + cm;
         waySeleArray.push([wayPlacesArray[i][0] + br + wayPlacesArray[i][1]]);
         
+         localStorage.setItem('lodgingWayPointSummary', wpSumm); 
         
         //console.log("way places array1: ", wayPlacesArray[i][0]);
         //console.log("way selection array2: ", wayPlacesArray[i][1]);
@@ -427,7 +429,7 @@ $(document).ready(function() {
 
     $('#lgSelections').html(wpSumm);
 
-    localStorage.setItem('lodgingWayPointSummary', wpSumm); 
+    
 
 
     updateDB();

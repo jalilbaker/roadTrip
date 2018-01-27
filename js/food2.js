@@ -78,6 +78,10 @@ $(document).ready(function() {
     var pitstop = localStorage.getItem('markPoint1Name'); 
     var destination = localStorage.getItem('markPoint2Name'); 
 
+    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
+    
+    $('#lgSelections').html(lodgingWaySummary);
+
     $('#startPoint').text(origin); 
 
     $('#profile-tab').text(pitstop); 
@@ -404,9 +408,13 @@ $(document).ready(function() {
       endSeleArray.push([endPlacesArray[3][0] + br + endPlacesArray[3][1]]);
     });
 
+
+
     epSumm = epSumm.slice(0, -2);
 
     $('#fdSelections').html(epSumm);
+
+    localStorage.setItem('foodEndPointSummary', epSumm); 
 
     updateDB();
   };
@@ -446,6 +454,8 @@ $(document).ready(function() {
 
     $('#fdSelections').html(wpSumm);
 
+    localStorage.setItem('foodWayPointSummary', wpSumm); 
+
     updateDB();
 
   };
@@ -476,12 +486,14 @@ $(document).ready(function() {
 
   $( "#contact-tab" ).click(function() {
     $('#fdSelections').empty();
-    // var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
-    // var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
-    // $('#ldSelections').html(lodgingWaySummary);
+    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
+    
+    $('#lgSelections').html(lodgingWaySummary);
   });
   $( "#profile-tab" ).click(function() {
     $('#fdSelections').empty();
+    var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
+    $('#lgSelections').html(lodgingEndSummary);
   });
 
   $(".wp-res-sel-1").click(function() {
