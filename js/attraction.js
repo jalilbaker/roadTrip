@@ -59,6 +59,10 @@ $(document).ready(function() {
   var endSeleArray = [];
 
 
+  var foodWaySummary = ''; 
+  var foodEndSummary = ''; 
+
+
   data = firebase.database().ref();
 
   // *** Set up Proxy and base Query's *******************************************//
@@ -81,7 +85,7 @@ $(document).ready(function() {
 
     var foodWaySummary = localStorage.getItem('foodWayPointSummary'); 
     
-    $('#lgSelections').html(foodWaySummary);
+    $('#fdSelections').html(foodWaySummary);
 
 
     $('#startPoint').text(origin); 
@@ -468,6 +472,8 @@ $(document).ready(function() {
   };
 
 
+
+
   $( "#contact-tab" ).click(function() {
     $('#atSelections').empty();
     var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
@@ -476,7 +482,7 @@ $(document).ready(function() {
 
     var foodWaySummary = localStorage.getItem('foodWayPointSummary'); 
     
-    $('#lgSelections').html(foodWaySummary);
+    $('#fdSelections').html(foodWaySummary);
   });
   $( "#profile-tab" ).click(function() {
     $('#atSelections').empty();
@@ -485,7 +491,7 @@ $(document).ready(function() {
 
     var foodEndSummary = localStorage.getItem('foodEndPointSummary'); 
     
-    $('#lgSelections').html(foodEndSummary);
+    $('#fdSelections').html(foodEndSummary);
   });
 
   $(".wp-att-sel-1").click(function() {
