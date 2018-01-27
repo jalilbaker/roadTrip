@@ -18,7 +18,7 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
 
-  var gApiKey = 'AIzaSyBntUJftstarx_tMDAHQh5Vwgsu3Ys_RTg';
+  var gApiKey = 'AIzaSyB7V7WeGMLuVehCSagXe_pKscF8ksKDzkk';
   var gName       = '';
   var gRating     = '';
   var gVicinity   = '';

@@ -18,7 +18,7 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
 
-  var gApiKey = 'AIzaSyBntUJftstarx_tMDAHQh5Vwgsu3Ys_RTg';
+  var gApiKey = 'AIzaSyB7V7WeGMLuVehCSagXe_pKscF8ksKDzkk';
   var gName       = '';
   var gRating     = '';
   var gVicinity   = '';
@@ -69,6 +69,21 @@ $(document).ready(function() {
 
 
   function init() {
+
+    var origin = localStorage.getItem('markPoint0Name'); 
+    var pitstop = localStorage.getItem('markPoint1Name'); 
+    var destination = localStorage.getItem('markPoint2Name'); 
+
+    $('#startPoint').text(origin); 
+
+    $('#profile-tab').text(pitstop); 
+    $('#profile-tab').attr('placeid', localStorage.getItem('markPoint1')); 
+    $('#profile-tab').attr('name', pitstop);
+
+    $('#contact-tab').text(destination); 
+    $('#contact-tab').attr('placeid', localStorage.getItem('markPoint2')); 
+    $('#contact-tab').attr('name', destination);
+    
 
     // *** Retrieve Place ID from Store *******************************************//
     for(var i=0, len=localStorage.length; i<len; i++) {
