@@ -25,12 +25,12 @@ $(document).ready(function() {
   var gPriceLevel = '';
 
   var eRadius = '50000';
-  var eTypes  = 'restaurant';
+  var eTypes  = 'lodging';
   var eMinPrice = '0';
   var eMaxPrice = '4';
 
   var wRadius = '50000';
-  var wTypes  = 'restaurant';
+  var wTypes  = 'lodging';
   var wMinPrice = '0';
   var wMaxPrice = '4';
 
@@ -52,7 +52,7 @@ $(document).ready(function() {
   var wPlNm = '';
   var wBdgt = '';
 
-  var endPlacesArray = [];		// SAMANTHA, I REMOVED THE SELECTIONS OBJECT THAT WAS HERE
+  var endPlacesArray = [];
   var wayPlacesArray = [];
   
   var waySeleArray = [];
@@ -69,21 +69,6 @@ $(document).ready(function() {
 
 
   function init() {
-
-
-    var origin = localStorage.getItem('markPoint0Name'); 
-    var pitstop = localStorage.getItem('markPoint1Name'); 
-    var destination = localStorage.getItem('markPoint2Name'); 
-
-    $('#startPoint').text(origin); 
-
-    $('#profile-tab').text(pitstop); 
-    $('#profile-tab').attr('placeid', localStorage.getItem('markPoint1')); 
-    $('#profile-tab').attr('name', pitstop);
-
-    $('#contact-tab').text(destination); 
-    $('#contact-tab').attr('placeid', localStorage.getItem('markPoint2')); 
-    $('#contact-tab').attr('name', destination);
 
     // *** Retrieve Place ID from Store *******************************************//
     for(var i=0, len=localStorage.length; i<len; i++) {
@@ -103,17 +88,8 @@ $(document).ready(function() {
       }
     }
 
-    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
-    var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
-
-      console.log(lodgingWaySummary);
-      console.log(lodgingEndSummary);
-
-      
-
-
-
-
+    ePlId = 'ChIJjQmTaV0E9YgRC2MLmS_e_mY';
+    wPlId = 'ChIJAxTdrtWAQIgR5EwO8pLjQKY';
     // *****************************************************************************//
 
 
@@ -172,7 +148,7 @@ $(document).ready(function() {
 
                             if (i < 4) {
                               // Build the Restaurant Name DOM ID
-                              var rNameId = "#ep-res-name-"+ [i+1];
+                              var rNameId = "#ep-lod-name-"+ [i+1];
                               $(rNameId).html(gName);
 
                               // Build the Restaurant Description DOM ID
@@ -202,16 +178,16 @@ $(document).ready(function() {
                                 // Data is not an integer so assign a default price level dollar value
                                 rPrLvlDollars = "$$";
                               }; 
-                              rDescription = rDescription + "BUDGET LEVEL: " + rPrLvlDollars + "; "; 
+                              rDescription = rDescription + "BUDGET LEVEL: " + rPrLvlDollars + "; ";
 
                               var rVicinity = placesResults[i].vicinity;
                               if (rVicinity != '') {
                                 rDescription = rDescription + "VICINITY: " + rVicinity;
                               };
-                              var rDescriptionId = "#ep-res-desc-" + [i+1];
+                              var rDescriptionId = "#ep-lod-desc-" + [i+1];
                               $(rDescriptionId).html(rDescription);
  
-                              var rPhotoId = "#ep-res-img-" + [i+1];
+                              var rPhotoId = "#ep-lod-img-" + [i+1];
                               // var parent = document.getElementById(rPhotoId);
  
                               // //create an image element
@@ -298,7 +274,7 @@ $(document).ready(function() {
 
                             if (i < 4) {
                               // Build the Restaurant Name DOM ID
-                              var rNameId = "#wp-res-name-"+ [i+1];
+                              var rNameId = "#wp-lod-name-"+ [i+1];
                               $(rNameId).html(gName);
 
                               // Build the Restaurant Description DOM ID
@@ -306,7 +282,7 @@ $(document).ready(function() {
 
                               var rRating = placesResults[i].rating;
                               if (rRating !='') {
-                                rDescription = rDescription + "RATING: " + rRating + "; "; 
+                                rDescription = rDescription + "RATING: " + rRating + "; ";
                               };
 
                               // Build the Restaurant Price Level Sign
@@ -328,17 +304,17 @@ $(document).ready(function() {
                                 // Data is not an integer so assign a default price level dollar value
                                 rPrLvlDollars = "$$";
                               }; 
-                              rDescription = rDescription + "BUDGET LEVEL: " + rPrLvlDollars + "; "; 
+                              rDescription = rDescription + "BUDGET LEVEL: " + rPrLvlDollars + "; ";
 
                               var rVicinity = placesResults[i].vicinity;
                               if (rVicinity != '') {
                                 rDescription = rDescription + "VICINITY: " + rVicinity;
                               };
 
-                              var rDescriptionId = "#wp-res-desc-" + [i+1];
+                              var rDescriptionId = "#wp-lod-desc-" + [i+1];
                               $(rDescriptionId).html(rDescription);
 
-                              var rPhotoId = "#wp-res-img-" + [i+1];
+                              var rPhotoId = "#wp-lod-img-" + [i+1];
                               // var parent = document.getElementById(rPhotoId);
  
                               // //create an image element
@@ -375,38 +351,35 @@ $(document).ready(function() {
     endSeleArray = [];
     
     var cm = ", ";
-    var br = ";";	// Samantha, I replaced the comma with a semi-colon as some names have a comma in them
+    var br = ";";
 
-    $('#fdSelections').empty();
+    $('#lgSelections').empty();
 
-    $.each($("input[name='ep-res-sel-1']:checked"), function() {
-      epSumm = epSumm + endPlacesArray[0][0] + cm;
-      endSeleArray.push([endPlacesArray[0][0] + br + endPlacesArray[0][1]]);
-      //console.log("end selc array ", endSeleArray);
-    });
+    var radios = document.getElementsByName('gridRadios2');
 
-    $.each($("input[name='ep-res-sel-2']:checked"), function() {
-      epSumm = epSumm + endPlacesArray[1][0] + cm;
-      endSeleArray.push([endPlacesArray[1][0] + br + endPlacesArray[1][1]]);
-    });
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+      if (radios[i].checked)
+      {
+        // do whatever you want with the checked radio
+        epSumm = epSumm + endPlacesArray[i][0] + cm;
+        endSeleArray.push([endPlacesArray[i][0] + br + endPlacesArray[i][1]]);
 
-    $.each($("input[name='ep-res-sel-3']:checked"), function() {
-      epSumm = epSumm + endPlacesArray[2][0] + cm;
-      endSeleArray.push([endPlacesArray[2][0] + br + endPlacesArray[2][1]]);
-    });
+        localStorage.setItem('lodgingEndPointSummary', epSumm); 
 
-    $.each($("input[name='ep-res-sel-4']:checked"), function() {
-      epSumm = epSumm + endPlacesArray[3][0] + cm;
-      endSeleArray.push([endPlacesArray[3][0] + br + endPlacesArray[3][1]]);
-    });
-
+        //console.log("end places array1: ", endPlacesArray[i][0]);
+        //console.log("end selection array2: ", endPlacesArray[i][1]);
+        // only one radio can be logically checked, don't check the rest
+        break;
+      };
+    };
+    //console.log("end selection array: ", endSeleArray);
     epSumm = epSumm.slice(0, -2);
 
-    $('#fdSelections').html(epSumm);
+    $('#lgSelections').html(epSumm);
 
     updateDB();
   };
-
 
 
   function wpSummary() {
@@ -414,33 +387,35 @@ $(document).ready(function() {
     waySeleArray = [];
     
     var cm = ", ";
-    var br = ";";	// Samantha, I replaced the comma with a semi-colon as some names have a comma in them
+    var br = ";";
     
-    $('#fdSelections').empty();
+    $('#lgSelections').empty();
 
-    $.each($("input[name='wp-res-sel-1']:checked"), function() {
-      wpSumm = wpSumm + wayPlacesArray[0][0] + cm;
-      waySeleArray.push([wayPlacesArray[0][0] + br + wayPlacesArray[0][1]]);
-    });
+    var radios = document.getElementsByName('gridRadios1');
 
-    $.each($("input[name='wp-res-sel-2']:checked"), function() {
-      wpSumm = wpSumm + wayPlacesArray[1][0] + cm;
-      waySeleArray.push([wayPlacesArray[1][0] + br + wayPlacesArray[1][1]]);
-    });
-
-    $.each($("input[name='wp-res-sel-3']:checked"), function() {
-      wpSumm = wpSumm + wayPlacesArray[2][0] + cm;
-      waySeleArray.push([wayPlacesArray[2][0] + br + wayPlacesArray[2][1]]);
-    });
-
-    $.each($("input[name='wp-res-sel-4']:checked"), function() {
-      wpSumm = wpSumm + wayPlacesArray[3][0] + cm;
-      waySeleArray.push([wayPlacesArray[3][0] + br + wayPlacesArray[3][1]]);
-    });
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+      //console.log("way radio length ", length);
+      if (radios[i].checked)
+      {
+        // do whatever you want with the checked radio
+        wpSumm = wpSumm + wayPlacesArray[i][0] + cm;
+        waySeleArray.push([wayPlacesArray[i][0] + br + wayPlacesArray[i][1]]);
+        
+        
+        //console.log("way places array1: ", wayPlacesArray[i][0]);
+        //console.log("way selection array2: ", wayPlacesArray[i][1]);
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
 
     wpSumm = wpSumm.slice(0, -2);
 
-    $('#fdSelections').html(wpSumm);
+    $('#lgSelections').html(wpSumm);
+
+    localStorage.setItem('lodgingWayPointSummary', wpSumm); 
+
 
     updateDB();
 
@@ -448,56 +423,69 @@ $(document).ready(function() {
 
 
   function updateDB() {
-    var newFood = {
+   //console.log("lodging selection arrays(w-e): ", waySeleArray, " ", endSeleArray);
+    var newLodg = {
          endSelection: [],
          waySelection: []  
     };
-    // load the food objects with new data obtained from Google API
+   // load the food objects with new data obtained from Google API
     for (var i = 0; i < waySeleArray.length; i++) {
-      newFood.waySelection[i] = waySeleArray[i];
+      newLodg.waySelection[i] = waySeleArray[i];
     };
     for (var i = 0; i < endSeleArray.length; i++) {
-      newFood.endSelection[i] = endSeleArray[i];
+      newLodg.endSelection[i] = endSeleArray[i];
     };
     // get Firebase DB selections record
     var selections = {};
     data.child("selections");
-    selections.food = newFood;
-    //Upload the Road Trip food selections data object into the database
-    //data.update(selections);                     
-    //data.child("selections");
+    //console.log("DB object current contents: ", selections);
+    selections.lodging = newLodg;
+    //console.log("DB object updated contents: ", selections);
+    // Upload the Road Trip food selections data object into the database
+    data.update(selections);                    
+    data.child("selections");
+    //console.log("get from firebse Db: ", selections);
   };
 
 
   $( "#contact-tab" ).click(function() {
-    $('#fdSelections').empty();
-  });
-  $( "#profile-tab" ).click(function() {
-    $('#fdSelections').empty();
+    $('#lgSelections').empty();
   });
 
-  $(".wp-res-sel-1").click(function() {
+  $( "#profile-tab" ).click(function() {
+    $('#lgSelections').empty();
+  });
+
+
+  $(".wp-lod-sel-1").click(function() {
     wpSummary();
   });
-  $(".wp-res-sel-2").click(function() {
+
+  $(".wp-lod-sel-2").click(function() {
     wpSummary();
   });
-  $(".wp-res-sel-3").click(function() {
+
+  $(".wp-lod-sel-3").click(function() {
     wpSummary();
   });
-  $(".wp-res-sel-4").click(function() {
+
+  $(".wp-lod-sel-4").click(function() {
     wpSummary();
   });
-  $(".ep-res-sel-1").click(function() {
+
+  $(".ep-lod-sel-1").click(function() {
     epSummary();
   });
-  $(".ep-res-sel-2").click(function() {
+
+  $(".ep-lod-sel-2").click(function() {
     epSummary();
   });
-  $(".ep-res-sel-3").click(function() {
+
+  $(".ep-lod-sel-3").click(function() {
     epSummary();
   });
-  $(".ep-res-sel-4").click(function() {
+
+  $(".ep-lod-sel-4").click(function() {
     epSummary();
   });
 
