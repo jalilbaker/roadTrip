@@ -83,7 +83,7 @@ $(document).ready(function() {
     $('#contact-tab').text(destination); 
     $('#contact-tab').attr('placeid', localStorage.getItem('markPoint2')); 
     $('#contact-tab').attr('name', destination);
-    
+
 
     // *** Retrieve Place ID from Store *******************************************//
     for(var i=0, len=localStorage.length; i<len; i++) {
@@ -103,8 +103,6 @@ $(document).ready(function() {
       }
     }
 
-    ePlId = 'ChIJjQmTaV0E9YgRC2MLmS_e_mY';
-    wPlId = 'ChIJAxTdrtWAQIgR5EwO8pLjQKY';
     // *****************************************************************************//
 
 

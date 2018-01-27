@@ -58,6 +58,9 @@ $(document).ready(function() {
   var waySeleArray = [];
   var endSeleArray = [];
 
+  var lodgingWaySummary = ''; 
+  var lodgingEndSummary = ''; 
+
 
   data = firebase.database().ref();
 
@@ -103,11 +106,12 @@ $(document).ready(function() {
       }
     }
 
-    var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
-    var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
+
 
       console.log(lodgingWaySummary);
       console.log(lodgingEndSummary);
+
+
 
       
 
@@ -469,8 +473,12 @@ $(document).ready(function() {
   };
 
 
+
   $( "#contact-tab" ).click(function() {
     $('#fdSelections').empty();
+    // var lodgingWaySummary = localStorage.getItem('lodgingWayPointSummary'); 
+    // var lodgingEndSummary = localStorage.getItem('lodgingEndPointSummary'); 
+    // $('#ldSelections').html(lodgingWaySummary);
   });
   $( "#profile-tab" ).click(function() {
     $('#fdSelections').empty();
