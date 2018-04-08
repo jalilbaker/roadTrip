@@ -327,7 +327,7 @@ $(document).ready(function() {
 
                               wayPlacesArray.push([gName,rDescription]);
           
-                              //console.log("way places: ",wayPlacesArray);
+                              console.log("way places: ",wayPlacesArray);
 
                             }; // end process JSON data and display on DOM 
                           }; // end For Loop to get all entries from the JSON array  
